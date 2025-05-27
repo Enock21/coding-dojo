@@ -81,19 +81,58 @@ class Solution2 {
     }
 
     public static int charToNum(char c){
-        if (c == 'I'){return 1;}
-        else if (c == 'V'){return 5;}
-        else if (c == 'X'){return 10;}
-        else if (c == 'L'){return 50;}
-        else if (c == 'C'){return 100;}
-        else if (c == 'D'){return 500;}
-        else if (c == 'M'){return 1000;}
-        else return -1;
+        switch (c){
+            case 'I': return 1;
+            case 'V': return 5;
+            case 'X': return 10;
+            case 'L': return 50;
+            case 'C': return 100;
+            case 'D': return 500;
+            case 'M': return 1000;
+            default: return -1;
+        }
+
+        // if (c == 'I'){return 1;}
+        // else if (c == 'V'){return 5;}
+        // else if (c == 'X'){return 10;}
+        // else if (c == 'L'){return 50;}
+        // else if (c == 'C'){return 100;}
+        // else if (c == 'D'){return 500;}
+        // else if (c == 'M'){return 1000;}
+        // else return -1;
     }
 }
 
+class Solution3 {
+    public static int romanToInt(String s) {
+        int[] map = new int[26]; // 'A' a 'Z'
+        map['I' - 'A'] = 1;
+        map['V' - 'A'] = 5;
+        map['X' - 'A'] = 10;
+        map['L' - 'A'] = 50;
+        map['C' - 'A'] = 100;
+        map['D' - 'A'] = 500;
+        map['M' - 'A'] = 1000;
+
+        int result = 0;
+        int n = s.length();
+
+        for (int i = 0; i < n - 1; i++) {
+            int current = map[s.charAt(i) - 'A'];
+            int next = map[s.charAt(i + 1) - 'A'];
+            result += (current < next) ? -current : current;
+        }
+
+        // Último símbolo sempre soma
+        result += map[s.charAt(n - 1) - 'A'];
+
+        return result;
+    }
+}
+
+
 class Main{
     public static void main(String[] args){
-        System.out.println(Solution2.romanToInt("IV"));
+        System.out.println(Solution3.romanToInt("IV"));
     }
 }
