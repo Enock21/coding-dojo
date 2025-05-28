@@ -1,0 +1,8 @@
+str1
+
+str1: LEET
+str2: E
+
+Output: ABC
+
+Dois apontadores: um para str1 e outro para str2, ambos operando paralelamente. Enquanto a1 e a2 tiverem valores identicos, adiciona esse valor ao resultado até que a1 e a2 sofram divergência. Nesse ponto, armazena os valores coletados até então.

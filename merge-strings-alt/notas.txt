@@ -1,0 +1,5 @@
+Um for iterando sobre ambas as strings
+
+Funciona até o ponto em que ambas as strings tem o mesmo length
+
+Depois, adicionar o restante da que tem o length maior.
