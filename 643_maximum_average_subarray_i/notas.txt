@@ -1,11 +1,26 @@
+SOLUÇÃO 1
+
 Percorrer o array em busca dos k primeiros numeros
 Após somar os k primeiros numeros, dividir por k e armazenar o resultado se for o maior até então
 
 Exemplo:
 [1 12 (-5 -6 50 3)I], k = 4
 I: 6
-Count: 0
 S: 42
 Max: 12,75
 limiteEsq:3
 limiteDir:6!
+
+---
+
+SOLUÇÃO 2
+
+Técnica da janela deslizante. Semelhante a solução 1. Porém, em vez de recalcular todos os valores na janela, vai removendo e adicionando valores conforme a janela se move.
+
+Exemplo:
+[1 12 (-5 -6 50 3)], k = 4
+S: 42
+Media: 51 / 4 = 12,75
+Max: 12,75
+limiteEsq:2
+limiteDir:5
