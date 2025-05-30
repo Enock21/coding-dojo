@@ -45,8 +45,27 @@ class Solution2 {
     }
 }
 
+class Solution3{
+    public static double findMaxAverage(int[] nums, int k) {
+        int sum = 0;
+        // Calcula a soma dos primeiros k elementos
+        for (int i = 0; i < k; i++) {
+            sum += nums[i];
+        }
+        int maxSum = sum;
+        // Desliza a janela pelo array
+        for (int i = k; i < nums.length; i++) {
+            sum += nums[i] - nums[i - k];//Qual a lógica matemática por trás desse i-k?
+            if (sum > maxSum) {
+                maxSum = sum;
+            }
+        }
+        return (double) maxSum / k;
+    }
+}
+
 class Main{
     public static void main(String[] args){
-        System.out.println(Solution2.findMaxAverage(new int[]{1,12,-5,-6,50,3}, 4));
+        System.out.println(Solution3.findMaxAverage(new int[]{1,12,-5,-6,50,3}, 4));
     }
 }
