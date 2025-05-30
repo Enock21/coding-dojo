@@ -1,0 +1,11 @@
+Percorrer o array em busca dos k primeiros numeros
+Após somar os k primeiros numeros, dividir por k e armazenar o resultado se for o maior até então
+
+Exemplo:
+[1 12 (-5 -6 50 3)I], k = 4
+I: 6
+Count: 0
+S: 42
+Max: 12,75
+limiteEsq:3
+limiteDir:6!

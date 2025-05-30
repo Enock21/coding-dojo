@@ -1,4 +1,4 @@
-
+package move_zeroes;
 //https://leetcode.com/problems/move-zeroes/submissions/1648178724/?envType=study-plan-v2&envId=leetcode-75
 
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ class Solution2 {
     }
 }
 
-class Main {
+public class Main {
     public static int[] nums = new int[]{0,1,0,3,12,0};
 
     public static void main(String[] args){
