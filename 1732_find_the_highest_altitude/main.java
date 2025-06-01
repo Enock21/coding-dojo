@@ -3,7 +3,7 @@ class Solution {
         int[] result = new int[gain.length + 1];
         int max = -100;
         result[0] = 0;
-        for (int i = 0; i < gain.length - 1; i++){
+        for (int i = 0; i < gain.length; i++){
             result[i+1] = result[i] + gain[i];
         }
         for (int i = 0; i < result.length; i++){
