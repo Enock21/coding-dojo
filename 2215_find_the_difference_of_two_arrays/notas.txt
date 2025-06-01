@@ -1,0 +1,20 @@
+nums1 = [1,2,3]
+nums2 = [2,4,6]
+
+[0]:1,3
+[1]:4,6
+
+For em nums1.
+Para cada elemento, procurá-lo em nums2:
+Se não houver match, adiciona a resposta1
+For em nums2.
+Para cada elemento, procurá-lo em nums1:
+Se não houver match, adiciona a resposta2
+
+SOLUÇÃO 2
+Gera Hashmap de nums1
+Gera Hashmap de nums2
+Para cada num em nums1, procura no hasmap de nums2
+Não encontrou? Adiciona a resposta 1
+Para cada num em nums2, procura no hasmap de nums1
+Não encontrou? Adiciona a resposta 2
