@@ -1,0 +1,5 @@
+Divide primeiro por ano: entrada / 365 (ano) * 24 (dia) * 60 (hora) * 60 (minuto). Resto diferente zero? Repete processo de divisão no resto.
+Se não der, faz: entrada / 24 (dia) * 60 (hora) * 60 (minuto). Resto diferente zero? Repete processo de divisão no resto.
+Se não der, faz: entrada / 60 (hora) * 60 (minuto). Resto diferente zero? Repete processo de divisão no resto.
+Se não der, faz: entrada / 60 (minuto). Resto diferente zero? Repete processo de divisão no resto.
+Se não der, printa em segundos.
