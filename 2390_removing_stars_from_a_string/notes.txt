@@ -1,0 +1,7 @@
+SOLUÇÃO 1
+
+Ler a string da esquerda pra direita até ler um *. Sempre tendo um apontador para o elemento anterior.
+
+Leu *: remove * e o elemento anterior. Apontador da um shift pra esquerda.
+
+Prossegue
