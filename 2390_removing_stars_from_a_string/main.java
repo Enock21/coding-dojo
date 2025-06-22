@@ -6,32 +6,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Supondo que * não pode ser o primeiro elemento de s
-class Solution {
+class Solution1 {
     public static String removeStars(String s) {
-        char[] chars = s.toCharArray();
-        String result = "";
+        ArrayList<Character> chars = new ArrayList<>();
+
+        for (int i = 0; i < s.length(); i++){
+            chars.add(s.charAt(i));
+        }
+
         int i = 0;
-        int j = 1;
-        while(i < s.length()){
-            if (j < s.length()){
-                if (chars[j] == '*'){
-                    i++;
-                    j++;
-                    continue;
-                }
-                result = result + chars[i];
-            }else{
-                result = result + chars[i];
+        while(i < chars.size()){
+            if (chars.get(i) == '*'){
+                chars.remove(i);
+                chars.remove(i-1);
+                i--;
+                continue;
             }
             i++;
-            j++;
         }
-        return result; 
+
+        String result = "";
+        for (int j = 0; j < chars.size(); j++){
+            result = result + chars.get(j);
+        }
+        return result;
     }
 }
 
 class Main{
     public static void main(String[] args) {
-        System.out.println(Solution.removeStars("leet**cod*e"));
+        System.out.println(Solution1.removeStars("leet**cod*e"));
+        /*
+        Input: s = "leet**cod*e"
+        Output: "lecoe"
+         */
     }
 }
