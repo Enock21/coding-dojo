@@ -33,9 +33,29 @@ class Solution1 {
     }
 }
 
+//Usando StringBuilder pra fazer operação em string
+class Solution2 {
+    public static String removeStars(String s) {
+        StringBuilder str = new StringBuilder(s);
+
+        int i = 0;
+        while(i < str.length()){
+            if (str.charAt(i) == '*'){
+                str.deleteCharAt(i);
+                str.deleteCharAt(i-1);
+                i--;
+                continue;
+            }
+            i++;
+        }
+
+        return str.toString();
+    }
+}
+
 class Main{
     public static void main(String[] args) {
-        System.out.println(Solution1.removeStars("leet**cod*e"));
+        System.out.println(Solution2.removeStars("leet**cod*e"));
         /*
         Input: s = "leet**cod*e"
         Output: "lecoe"
