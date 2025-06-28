@@ -54,15 +54,16 @@ class Solution2 {
     }
 }
 
-//Eliminando um dos deleteCharAt IOB????
+//Eliminando um dos deleteCharAt, corta o tempo pela metade.
 class Solution3 {
     public static String removeStars(String s) {
         StringBuilder str = new StringBuilder(s);
 
         int i = 0;
         while(i < str.length()){
-            if (str.charAt(i) == '*'){
-                str.delete(i-1, i);
+            Character character = str.charAt(i);
+            if (character == '*'){
+                str.delete(i-1, i+1);
                 i--;
                 continue;
             }
@@ -103,7 +104,7 @@ class Solution4 {
 
 class Main{
     public static void main(String[] args) {
-        System.out.println(Solution4.removeStars("leet**cod*e"));
+        System.out.println(Solution3.removeStars("leet**cod*e"));
         /*
         Input: s = "leet**cod*e"
         Output: "lecoe"
