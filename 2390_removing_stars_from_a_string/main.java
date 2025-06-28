@@ -102,9 +102,31 @@ class Solution4 {
     }
 }
 
+//Trocando Stack por StringBuilder na solução 4 pra provar a hipótese de que o .pop do stack é mais otimizado do que o deleteCharAt() do StringBuilder
+//Foi mais eficiente do que a solucao 5. Afinal o deleteCharAt() não é mais custoso que o pop()? Ou o custo da nova solução compensa o overhead adicional do deletCharAt()?
+//Resposta: O deleteCharAt acessa elementos em tempo constante. O que custa é alterar o array pra preencher a lacuna do elemento removido. Quando se remove o ultimo elemento com deleteCharAt, não há custo de movimentação, tornado-a uma operação O(1).
+class Solution5 {
+    public static String removeStars(String s) {
+
+        StringBuilder stk = new StringBuilder();
+
+        int i = 0;
+        while(i < s.length()){
+            if (s.charAt(i) == '*'){
+                stk.deleteCharAt(stk.length()-1);
+            }else{
+                stk.append(s.charAt(i));
+            }
+            i++;
+        }
+
+        return stk.toString();
+    }
+}
+
 class Main{
     public static void main(String[] args) {
-        System.out.println(Solution3.removeStars("leet**cod*e"));
+        System.out.println(Solution5.removeStars("leet**cod*e"));
         /*
         Input: s = "leet**cod*e"
         Output: "lecoe"
