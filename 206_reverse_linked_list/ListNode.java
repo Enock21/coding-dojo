@@ -37,21 +37,63 @@ class Solution{
     }
 }
 
+class Solution2{
+    public static ListNode reverseList(ListNode head) {
+
+        ArrayList<Integer> vals = new ArrayList<Integer>();
+
+        if (head == null) {
+            return null;
+        }
+
+        while (head != null) {
+            vals.add(head.val);
+            head = head.next;
+        }
+
+        System.out.println(vals.toString());
+
+        ListNode n = new ListNode(vals.get(0), null);
+        for (int i = 1; i < vals.size(); i++) {
+
+            n = new ListNode(vals.get(i), n);
+        }
+
+        return n;   
+    }
+}
+
+//Mais otimizada
+class Solution3{
+    public static ListNode reverseList(ListNode head){
+        if(head == null){return null;}
+        if(head.next == null){return head;}
+
+        ListNode tail = new ListNode(head.val);
+        head = head.next;
+        while(true){
+            tail = new ListNode(head.val, tail);
+            if (head.next == null){break;}
+            head = head.next;
+        }
+
+        return tail;
+    }
+}
+
 class Main{
     public static void main(String[] args){
-        // ListNode node = new ListNode(
-        //     1, new ListNode(
-        //         2, new ListNode(
-        //             3, new ListNode(
-        //                 4, new ListNode(5)
-        //             )
-        //         )
-        //     )
-        // );
+        ListNode node = new ListNode(
+            1, new ListNode(
+                2, new ListNode(
+                    3, new ListNode(
+                        4, new ListNode(5)
+                    )
+                )
+            )
+        );
 
-        ListNode node = null;
-
-        node = Solution.reverseList(node);
+        node = Solution3.reverseList(node);
         
         while(true){
             if (node == null){break;}
