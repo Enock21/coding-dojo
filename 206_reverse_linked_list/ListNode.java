@@ -9,6 +9,7 @@ class ListNode {
     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 }
 
+//Própria
 class Solution{
     public static ListNode reverseList(ListNode node){
         ArrayList<Integer> list = new ArrayList<>();
@@ -37,6 +38,7 @@ class Solution{
     }
 }
 
+//Alheia
 class Solution2{
     public static ListNode reverseList(ListNode head) {
 
@@ -63,7 +65,7 @@ class Solution2{
     }
 }
 
-//Mais otimizada
+//Mais otimizada. Própria
 class Solution3{
     public static ListNode reverseList(ListNode head){
         if(head == null){return null;}
@@ -81,6 +83,68 @@ class Solution3{
     }
 }
 
+//Recursiva. GPT
+class Solution4{
+    public static ListNode reverseList(ListNode head) {
+        // Caso base: lista vazia ou um único nó
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        // Inverte recursivamente a sublista que começa em head.next
+        ListNode newHead = reverseList(head.next);
+
+        // Depois que a sublista estiver invertida,
+        // head.next é o último nó da sublista invertida original.
+        head.next.next = head; // faz o próximo apontar para head (inverte a ligação)
+        head.next = null;      // evita ciclo, head vira o final da lista
+
+        return newHead; // newHead é a nova cabeça (antigo último nó)
+    }
+}
+
+//Solution4 alterada pra teste
+class Solution5{
+    public static ListNode reverseList(ListNode head) {
+        // Caso base: lista vazia ou um único nó
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        // Inverte recursivamente a sublista que começa em head.next
+        ListNode newHead = reverseList(head.next);
+
+        // Depois que a sublista estiver invertida,
+        // head.next é o último nó da sublista invertida original.
+        newHead.next = head; // faz o próximo apontar para head (inverte a ligação)
+        //Alteração acima
+        head.next = null;      // evita ciclo, head vira o final da lista
+
+        return newHead; // newHead é a nova cabeça (antigo último nó)
+    }
+}
+
+//Solution 4 alterada pra teste
+class Solution6{
+    public static ListNode reverseList(ListNode head) {
+        // Caso base: lista vazia ou um único nó
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        // Inverte recursivamente a sublista que começa em head.next
+        ListNode newHead = reverseList(head.next);
+
+        // Depois que a sublista estiver invertida,
+        // head.next é o último nó da sublista invertida original.
+        head.next.next = head; // faz o próximo apontar para head (inverte a ligação)
+        //head.next = null;      // evita ciclo, head vira o final da lista
+        //Alteração acima
+
+        return newHead; // newHead é a nova cabeça (antigo último nó)
+    }
+}
+
 class Main{
     public static void main(String[] args){
         ListNode node = new ListNode(
@@ -93,7 +157,7 @@ class Main{
             )
         );
 
-        node = Solution3.reverseList(node);
+        node = Solution5.reverseList(node);
         
         while(true){
             if (node == null){break;}
