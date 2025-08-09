@@ -116,8 +116,7 @@ class Solution5{
 
         // Depois que a sublista estiver invertida,
         // head.next é o último nó da sublista invertida original.
-        newHead.next = head; // faz o próximo apontar para head (inverte a ligação)
-        //Alteração acima
+        newHead.next = head; //Alteração. Dá errado.
         head.next = null;      // evita ciclo, head vira o final da lista
 
         return newHead; // newHead é a nova cabeça (antigo último nó)
@@ -145,6 +144,23 @@ class Solution6{
     }
 }
 
+//Refazendo a solucao recursiva sem olhar a resposta
+class Solution7{
+    public static ListNode reverseList(ListNode currentNode){
+        if (currentNode == null || currentNode.next == null){
+            return currentNode;
+        }
+
+        ListNode newHead = reverseList(currentNode.next);
+
+        currentNode.next.next = currentNode;
+
+        currentNode.next = null;
+
+        return newHead;
+    }
+}
+
 class Main{
     public static void main(String[] args){
         ListNode node = new ListNode(
@@ -157,7 +173,7 @@ class Main{
             )
         );
 
-        node = Solution5.reverseList(node);
+        node = Solution7.reverseList(node);
         
         while(true){
             if (node == null){break;}
