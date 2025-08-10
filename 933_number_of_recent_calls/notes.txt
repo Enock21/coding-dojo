@@ -51,11 +51,94 @@ ms: 1849 - 642 = 1207 <= 3000
 ping++
 return: 2
 
+//ERRO: Tinha que fazer uma outra verificação quando o h passasse a ser 1849, pois caso resultasse em um numero <= 3000, o novo count não seria 1, mas sim 2. Ou seja, nos ultimos 3000 ms haveriam 2 chamadas (a atual e a anterior).
 {642, 1849, 4921}
 h: 642
 t: 4921
 ms: 4921 - 642 = 4279 > 3000!!!
-ping = 1;
-return: 
+h: 1849
+ping = 1
+ms: 4921 - 642 = 
+return: 1
+
+//CORREÇÃO DO ANTERIOR
+{642, 1849, 4921}
+h: 642
+t: 4921
+ms: 4921 - 642 = 4279 > 3000!!!
+count = 0
+h: 1849
+{1849, 4921}
+ms: 4921 - 1849 = 3072 > 3000!!!
+count = 0;
+h: 4921
+{4921}
+4921 - 4921 = 0 <= 3000
+count++
+return: 1
+
+{4921, 5936}
+h: 4921
+t: 5936
+ms: 5936 - 4921 = 1015 <= 3000
+count++
+return: 2
+
+{4921, 5936, 5957}
+h: 4921
+t: 5957
+ms: 5957 - 4921 = 1036 <= 3000
+count++
+return: 3
+FIM
 
 ---
+
+EXEMPLO3
+
+[1, 100, 3001, 3002]
+
+[1]
+h: 1
+t: 1
+ms: 1 - 1 = 0 <= 3000
+count++
+return 1
+
+[1, 100]
+h: 1
+t: 100
+ms: 100 - 1 = 99 <= 3000
+count++
+return 2
+
+[1, 100, 3001]
+h: 1
+t: 3001
+3001 - 1 = 3000 <= 3000
+count++
+return 3
+
+//ERRADO
+[1, 100, 3001, 3002]
+h: 1
+t: 3002
+3002 - 1 = 3001 > 3000!!!
+count 0//Fonte do erro
+h: 100
+[100, 3001, 3002]
+3002 - 100 = 2902 < 3000
+count++
+return 1
+
+//CERTO
+[1, 100, 3001, 3002]
+h: 1
+t: 3002
+3002 - 1 = 3001 > 3000!!!
+count-- (2)
+h: 100
+[100, 3001, 3002]
+3002 - 100 = 2902 < 3000
+count++
+return 1
