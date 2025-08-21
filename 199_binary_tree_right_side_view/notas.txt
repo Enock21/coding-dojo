@@ -1,0 +1,7 @@
+SOLUÇÃO 1
+
+Iterar por todos os nós da árvore, armazenando o nível (altura) em que cada um está, assim como sua posição da esquerda pra direita nesse nível.
+
+Retornar os elementos de cada nível cuja posição é a maior.
+
+Pra iterar, implementar uma função recursiva. Armazenar o resultado como uma lista e listas, contendo níveis e seus respectivos elementos.
