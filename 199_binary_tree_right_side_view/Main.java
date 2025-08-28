@@ -60,7 +60,7 @@ class Solution2 {
     }
 }
 
-//Método recursivo
+//Método recursivo do GPT
 class Solution3{
     public static List<Integer> rightSideView(TreeNode root){
         List<Integer> rightmostList = new ArrayList<>();
@@ -77,6 +77,23 @@ class Solution3{
         rightSideAux(node.left, rightmostList, level+1);
         
     }
+}
+
+//Reimplementando solução recursiva do zero
+class Solution4{
+    public static List<Integer> rightSideView(TreeNode node){
+        ArrayList<Integer> view = new ArrayList<>();
+        aux(node, 0, view);
+        return view;
+    }
+
+    public static void aux(TreeNode node, int level, ArrayList<Integer> view){
+        if (node == null) return;
+        if (level == view.size()) view.add(node.val);
+        aux(node.right, level+1, view);
+        aux(node.left, level+1, view);
+    }
+
 }
 
 public class Main {
@@ -107,6 +124,6 @@ public class Main {
             )
         );
 
-        System.out.println(Solution3.rightSideView(caso4));
+        System.out.println(Solution4.rightSideView(caso4));
     }
 }
